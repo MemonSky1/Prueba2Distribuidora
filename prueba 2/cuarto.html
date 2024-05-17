@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #FFF0CD;
+        }
+    </style>
+    <style>
+        .navbar-custom {
+            background-color: #FFF0CD;
+        }
+    </style>
+    <style>
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            max-height: 400px;
+        }
+
+        .carrito {
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .carrito h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .carrito ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .carrito ul li {
+            margin-bottom: 10px;
+        }
+
+        .total {
+            font-weight: bold;
+        }
+
+        .vaciar-carrito {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .vaciar-carrito:hover {
+            background-color: #c82333;
+        }
+
+        .comprar-carrito {
+            background-color: #0cc9fd;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .comprar-carrito:hover {
+            background-color: #09558c;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html"><img
+                    src="logotipo-empresa-comercial-mercado-fresco_23-2148462395.jpg" style="width: 50px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">INICIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="segundo.html">PRODUCTOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tercero.html">CONVENIOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cuarto.html">CARRITO DE COMPRAS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="test.html">CONVENIOS ACTIVOS </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="carrito">
+            <div class="opciones">
+                <button type="button" class="btn btn-outline-primary opcion1">Productos organicos $22.000</button>
+                <button type="button" class="btn btn-outline-primary opcion2">Productos no perecederos $10.000</button>
+                <button type="button" class="btn btn-outline-primary opcion3">Productos lacteos $12.000</button>
+            </div>
+            <h2>Carrito de Compras</h2>
+            <ul class="lista-carrito">
+                <!-- Los productos seleccionados se añadirán aquí -->
+            </ul>
+            <p>Total: $<span class="total">0</span></p>
+            <button class="comprar-carrito">Comprar productos del carrito</button>
+            <button class="vaciar-carrito">Vaciar Carrito</button>
+        </div>
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.opcion1').click(function () {
+                agregarProducto("Productos organicos", 22000);
+            });
+
+            $('.opcion2').click(function () {
+                agregarProducto("Productos no perecederos", 10000);
+            });
+
+            $('.opcion3').click(function () {
+                agregarProducto("Productos lacteos", 12000);
+            });
+
+            $('.comprar-carrito').click(function () {
+                comprarCarrito()
+                mostrarMensajeExito();
+            });
+
+            $('.vaciar-carrito').click(function () {
+                vaciarCarrito();
+            });
+
+
+            function agregarProducto(nombre, precio) {
+                var totalActual = parseFloat($('.total').text());
+                $('.lista-carrito').append('<li>' + nombre + ' - $' + precio + '</li>');
+                $('.total').text(totalActual + precio);
+            }
+
+            function vaciarCarrito() {
+                $('.lista-carrito').empty();
+                $('.total').text('0');
+            }
+
+            function comprarCarrito() {
+                $('.lista-carrito').empty();
+                $('.total').text('0');
+            }
+
+            function mostrarMensajeExito() {
+
+                $('.alert').remove();
+
+                var mensaje = '<div class="alert alert-success" role="alert">El carrito ha sido comprado exitosamente</div>';
+                $('body').append(mensaje);
+
+                setTimeout(function () {
+                    $('.alert').fadeOut('slow', function () {
+                        $(this).remove();
+                    });
+                }, 10000);
+            }
+
+        });
+    </script>
+</body>
+
+</html>

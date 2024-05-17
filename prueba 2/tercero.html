@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convenios</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #FFF0CD;
+        }
+
+        .navbar-custom {
+            background-color: #FFF0CD;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html"><img
+                    src="logotipo-empresa-comercial-mercado-fresco_23-2148462395.jpg" style="width: 50px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">INICIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="segundo.html">PRODUCTOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tercero.html">CONVENIOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cuarto.html">CARRITO DE COMPRAS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="test.html">CONVENIOS ACTIVOS </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <form id="formulario">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control" id="correo" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <button type="submit" class="btn btn-primary">Ingresar</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $("#formulario").submit(function (event) {
+                var correo = $("#correo").val();
+                var contraseña = $("#exampleInputPassword1").val();
+
+                if (!correo.trim()) {
+                    alert("Debe introducir un correo electrónico.");
+                    event.preventDefault();
+                }
+
+                if (!contraseña.trim()) {
+                    alert("Debe introducir una contraseña.");
+                    event.preventDefault();
+                }
+            });
+
+            function validarCorreo(correo) {
+                var re = /\S+@\S+\.\S+/;
+                return re.test(correo);
+            }
+        });
+    </script>
+</body>
+
+</html>
